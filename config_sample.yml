@@ -1,0 +1,38 @@
+gcm:
+  senderId: #projectnumber of your project in google developer
+  apiKey: #AIza......
+  redphoneApiKey: # the values after the name and - of your project id eg : for yourappname-desd4f333 , or anything in our case
+  #xmpp: false
+apn:
+  pushCertificate: #replace with path
+  pushKey: #replace with path
+  voipCertificate: #replace with path
+  voipKey: #replace with path
+  #feedback: false
+
+redis:
+  url: http://127.0.0.1:6379
+
+authentication:
+  servers:
+  -  name: username #replace with yours
+     password: password #replace with yours
+
+server:
+    applicationConnectors:
+    - type: http
+      port: 9090
+    adminConnectors:
+    - type: http
+      port: 9091
+    #gzip:
+    #    enabled: true
+
+logging:
+  level: INFO
+  appenders:
+    - type: file
+      currentLogFilename: /var/log/pushserver.log
+      archivedLogFilenamePattern: /var/log/pushserver-%d.log.gz
+      archivedFileCount: 5
+- type: console
