@@ -63,6 +63,10 @@ public class HttpGCMSender implements GCMSender {
     if (!message.isRedphone()) {
       String  key     = message.isReceipt() ? "receipt" : message.isNotification() ? "notification" : message.isCall() ? "call" : "message";
       Message request = builder.withDataPart(key, message.getMessage()).build();
+      logger.warn(String.format("About to send httpgcm :::(gcm_id=%s), " +
+                              "(destination=%s), (device_id=%d), (message=%s)",
+                              message.getGcmId(), message.getNumber(),
+                              message.getDeviceId(), message.getMessage()));
 
       future = signalSender.send(request, message);
       markOutboundMeter(key);
